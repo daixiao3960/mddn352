@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">    
+<meta name=”viewport” content=”width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes” />
+  <title> Accessapp </title>
+  <style type="text/css">
+  .center{position:absolute; width:50%; height:50%; left:25%; top:50%; margin-left:auto; margin-top:auto; text-align:center; font-size:500%; }
+  .normal{background:#000000;}
+  .normal .txt{color:#FFFFFF;}
+  .doing{background:#FF0000;} 
+  .doing .txt{color:#FFFF00;}
+  </style>
+ </head>
+
+
+ <body id="mybody" class="normal">
+    <div id="txt" class="txt center">Shake me!</div>
+
+
+
+ </body>
+
+ <script type="text/javascript">
+    var doing = 0;  
+    var speed = 23; 
+    var lastx = 0;
+    var lasty = 0;
+    var lastz = 0;
+
+    function handleMotionEvent(event) {
+        var x = event.accelerationIncludingGravity.x;
+        var y = event.accelerationIncludingGravity.y;
+        var z = event.accelerationIncludingGravity.z;
+
+        if(doing==0){
+            if(Math.abs(x-lastx)>speed || Math.abs(y-lasty)>speed){
+                doing = 1;
+                show();
+            }
+        }
+
+        lastx = x;
+        lasty = y;
+        lastz = z;
+    }
+
+    function show(){
+        document.getElementById('mybody').className = 'doing';
+
+        document.getElementById('txt').innerHTML = 'Volunteer Finding...';
+        setTimeout(function(){
+            doing=0; 
+            document.getElementById('mybody').className='normal';
+            document.getElementById('txt').innerHTML = 'Shake me!';
+        },3000);
+    }
+
+    window.addEventListener("devicemotion", handleMotionEvent, true);
+ </script>
+           
+</html>
