@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+        <title>Survey</title>
+        <link rel="stylesheet" type="text/css" href="http://www.sucaihuo.com/jquery/css/common.css" />
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <style type="text/css">
+            .demo{margin-top:70px}
+            .shadow{-moz-box-shadow:1px 1px 2px rgba(0,0,0,.2); -webkit-box-shadow:1px 1px 2px rgba(0,0,0,.2); box-shadow:1px 1px 2px rgba(0,0,0,.2);}
+        </style>
+    </head>
+    <body>
+        <div class="head">
+        </div>
+        <div class="container" id="main">
+            <div class="demo">
+                <div id='quiz_area'></div>
+            </div>  
+        </div>
+
+        <script type="text/javascript" src="http://www.sucaihuo.com/Public/js/other/jquery.js"></script>
+        <script src="quiz.js"></script>
+        <script>
+            var init = {'questions': [{'question': 'Which interests you most？', 'answers': ['Archieves', 'Art and Photography', 'History', 'Pacific Cultures', 'Taonga Maori', 'Natural Environment'], 'correctAnswer': 1}, {'question': 'Which adjective suits you most', 'answers': ['Conversable', 'Introverte', 'Knowledgeble', 'Humorous'], 'correctAnswer': 3}, {'question': 'Adjective for your Ideal Buddy?', 'answers': ['Conversable', 'Introverte', 'Knowledgeble', 'Humorous'], 'correctAnswer': 3}, {'question': 'How long would you like to spend there', 'answers': ['less than 30min', '30 min - 1h', '1-2h', 'more than 2h'], 'correctAnswer': 2}]};
+
+            $(function() {
+                $('#quiz_area').jquizzy({
+                    questions: init.questions
+                });
+            });
+        </script>
+
+    </body>
+</html>
+
