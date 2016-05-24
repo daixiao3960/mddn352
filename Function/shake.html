@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">    
+<meta name=”viewport” content=”width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes” />
+  <title> Accessapp </title>
+  <style type="text/css">
+  .normal{background:#000000;}
+  .normal .txt{color:#FFFFFF;}
+  .doing{background:#FF0000;} 
+  .doing .txt{color:#FFFF00;}
+  </style>
+ </head>
+
+
+ <body id="mybody" class="normal">
+    <div id="txt"><img src="images/shakeme.png"></div>
+ </body>
+
+ <script type="text/javascript">
+    var doing = 0;  
+    var speed = 23; 
+    var lastx = 0;
+    var lasty = 0;
+    var lastz = 0;
+    function handleMotionEvent(event) {
+        var x = event.accelerationIncludingGravity.x;
+        var y = event.accelerationIncludingGravity.y;
+        var z = event.accelerationIncludingGravity.z;
+
+        if(doing==0){
+            if(Math.abs(x-lastx)>speed || Math.abs(y-lasty)>speed){
+                doing = 1;
+                show();
+            }
+        }
+
+        lastx = x;
+        lasty = y;
+        lastz = z;
+    }
+
+    function show(){
+        document.getElementById('mybody').className = 'doing';
+
+        document.getElementById('txt').innerHTML = '<img src='volunteer.png'>';
+        setTimeout(function(){
+            doing=0; 
+            document.getElementById('mybody').className='normal';
+        },3000);
+    }
+
+    window.addEventListener("devicemotion", handleMotionEvent, true);
+ </script>
+           
+</html>
